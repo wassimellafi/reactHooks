@@ -7,12 +7,11 @@ import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
 import ReactStars from "react-rating-stars-component";
 const NavBarComponent = (props) => {
-    const [rate, setRate] = useState();
     const ratingChanged = (newRating) => {
-        console.log("newRating", props.movies);
-        const res = props.movies.filter((prop) => prop.rate === newRating);
-        setRate(res);
-        console.log("res", res);
+        props.setRate(newRating);
+    };
+    const titleChanged = (e) => {
+        props.setSearchTitle(e.target.value);
     };
     return (
         <Container>
@@ -34,7 +33,7 @@ const NavBarComponent = (props) => {
                         type="text"
                         placeholder="Search"
                         className="mr-sm-2"
-                        // onChange={changesearch}
+                        onChange={titleChanged}
                     />
                     <Button variant="outline-info">Search</Button>
                 </Form>

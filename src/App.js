@@ -9,7 +9,9 @@ import MovieListComponent from "./components/movieList/MovieList";
 import Modalcomponent from "./components/modal/modal";
 import NavBarComponent from "./components/navbar/navBarComponent";
 function App() {
+    const [rate, setRate] = useState(1);
     const [order, setOrder] = useState("title");
+    const [searchTitle, setSearchTitle] = useState("");
     const [movies, setMovies] = useState([
         {
             title: "blackList",
@@ -93,16 +95,21 @@ function App() {
     function callBack(value) {
         setOrder(value);
     }
-    const filterSearch = (ValueSearch) => {
-        setMovies(ValueSearch);
-    };
 
     return (
         <div className="App">
-            <NavBarComponent movies={movies} />
+            <NavBarComponent
+                movies={movies}
+                setRate={setRate}
+                setSearchTitle={setSearchTitle}
+            />
             <Modalcomponent addNewMovie={addNewMovie} />
             <FilterComponent callBack={callBack} />
-            <MovieListComponent movies={movies} />
+            <MovieListComponent
+                movies={movies}
+                rate={rate}
+                searchTitle={searchTitle}
+            />
         </div>
     );
 }

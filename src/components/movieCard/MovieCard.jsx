@@ -13,12 +13,11 @@ const MovieCardComponent = (props) => {
                 <Card.Img variant="top" src={props.movie.posterUrl} />
                 <Card.Body>
                     <Card.Title>{props.movie.title}</Card.Title>
-                    <Card.Text>{newRating}</Card.Text>
                     <Card.Text>{props.movie.description}</Card.Text>
                     <ReactStars
                         onChange={ratingChanged}
                         count={5}
-                        value={newRating}
+                        value={props.movie.rate}
                         size={24}
                         isHalf={true}
                         emptyIcon={<i className="far fa-star"></i>}

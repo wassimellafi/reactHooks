@@ -3,6 +3,8 @@ import MovieCardComponent from "../movieCard/MovieCard";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Trailer from "../trailerdescription/Trailer";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 const MovieListComponent = (props) => {
     // setting the state hooks
     const movie = props.movies.filter((movie) => movie.rate >= props.rate);
@@ -20,7 +22,7 @@ const MovieListComponent = (props) => {
             <Row>
                 {movies.map((movie, key) => {
                     return (
-                        <Col key={key}>
+                        <Col key={movie.id}>
                             <MovieCardComponent movie={movie} />
                         </Col>
                     );
